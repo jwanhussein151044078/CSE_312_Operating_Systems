@@ -1,0 +1,80 @@
+command used to test the program 
+
+
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data mkdir /usr
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data mkdir /lib
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data mkdir /dev
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /
+       0		31/05/2020	22:26:26	                             usr
+       0		31/05/2020	22:26:29	                             lib
+       0		31/05/2020	22:26:32	                             dev
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data mkdir /usr/usr1
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data mkdir /usr/usr2
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data mkdir /usr/usr3
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data mkdir /usr/usr3/tempfolder
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /usr
+       0		31/05/2020	22:27:03	                            usr1
+       0		31/05/2020	22:27:05	                            usr2
+       0		31/05/2020	22:27:07	                            usr3
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /usr3
+invalid path !!
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /usr3
+invalid path !!
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /usr/usr3
+       0		31/05/2020	22:27:16	                      tempfolder
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data write /file.txt testinput.txt 
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data read /file.txt testoutput.txt 
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ cmp testinput.txt testoutput.txt 
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /
+       0		31/05/2020	22:26:26	                             usr
+       0		31/05/2020	22:26:29	                             lib
+       0		31/05/2020	22:26:32	                             dev
+    3344		31/05/2020	22:30:06	                        file.txt
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data write /usr/file.txt testinput.txt 
+invalid path !!
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data write /usr/file.txt testinput.txt 
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /usr
+       0		31/05/2020	22:27:03	                            usr1
+       0		31/05/2020	22:27:05	                            usr2
+       0		31/05/2020	22:27:07	                            usr3
+    3344		31/05/2020	22:31:18	                        file.txt
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data list /
+    3344		31/05/2020	22:31:18	                             usr
+       0		31/05/2020	22:26:29	                             lib
+       0		31/05/2020	22:26:32	                             dev
+    3344		31/05/2020	22:30:06	                        file.txt
+gtucpp@ubuntu:~/Desktop/midterm_v2/3$ ./fileSystemOper fileSystem.data dumpe2fs
+block size   2048
+block no     512
+fblock no    415
+inode no     512
+finode no    502
+addr_fsm     1
+addr_inode   2
+addr_root    85
+addr_fanddir 86
+addr_sib     59904
+addr_dib     68096
+addr_tib     92672
+occupied blocks {    0    1    2    3    4    5    6    7    8    9   10   11 
+                    12   13   14   15   16   17   18   19   20   21   22   23 
+                    24   25   26   27   28   29   30   31   32   33   34   35 
+                    36   37   38   39   40   41   42   43   44   45   46   47 
+                    48   49   50   51   52   53   54   55   56   57   58   59 
+                    60   61   62   63   64   65   66   67   68   69   70   71 
+                    72   73   74   75   76   77   78   79   80   81   82   83 
+                    84   85   86   87   88   89   90   91   92   93   94   95 
+                    96 }
+occupied inode {
+  no.   0                              root
+  no.   1                               usr
+  no.   2                               lib
+  no.   3                               dev
+  no.   4                              usr1
+  no.   5                              usr2
+  no.   6                              usr3
+  no.   7                        tempfolder
+  no.   8                          file.txt
+  no.   9                          file.txt
+}
